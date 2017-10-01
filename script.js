@@ -38,7 +38,7 @@ function draw(food, snake) {
 // snake = [[2,0], [1,0], [0,0]]
 // snake = [[1,0], [0,0]]
 function moveRight(snake) {
-  var snakeHead = snake[snake.lenght - 1];
+  var snakeHead = snake[snake.length - 1];
 
   //snakeHead = [1,0]
   //snakeHead = [2,3]
@@ -53,13 +53,17 @@ function moveRight(snake) {
 
 // main method
 document.addEventListener('DOMContentLoaded', function() {
-
+      var snake = [[0, 0], [1, 0], [2, 0]];
+      var food =[3,4];
+      draw(food, snake);
+      
 	// game loop - execute every 500ms
 	window.setInterval(function () { 
-		
-
+	  moveRight(snake);
+	  draw(food, snake);
 	}, 500);
 
-	draw([3, 4], [[0, 0], [1, 0], [2, 0]]);
+
+	
 }, false);
 
