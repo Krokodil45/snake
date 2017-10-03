@@ -38,14 +38,40 @@ function draw(food, snake) {
 // snake = [[2,0], [1,0], [0,0]]
 // snake = [[1,0], [0,0]]
 function moveRight(snake) {
-  var snakeHead = snake[snake.length - 1];
+     var snakeHead = snake[snake.length - 1];
+     var snakeHeadX = snakeHead[0];
+     var snakeHeadY = snakeHead[1];
+     var newSnakeHead = [snakeHeadX + 1, snakeHeadY];
 
-  //snakeHead = [1,0]
-  //snakeHead = [2,3]
-  var snakeHeadX = snakeHead[0];
-  var snakeHeadY = snakeHead[1];
+  snake.push(newSnakeHead);
+  snake.shift();
+}
 
-  var newSnakeHead = [snakeHeadX + 1, snakeHeadY];
+function moveLeft(snake) {
+	 var snakeHead = snake[snake.length - 1];
+     var snakeHeadX = snakeHead[0];
+     var snakeHeadY = snakeHead[1];
+     var newSnakeHead = [snakeHeadX - 1, snakeHeadY];
+
+  snake.push(newSnakeHead);
+  snake.shift();
+}
+
+function moveDown (snake) {
+	 var snakeHead = snake[snake.length - 1];
+     var snakeHeadX = snakeHead[0];
+     var snakeHeadY = snakeHead[1];
+     var newSnakeHead = [snakeHeadX, snakeHeadY + 1];
+
+  snake.push(newSnakeHead);
+  snake.shift();
+}
+
+function moveUp (snake) {
+	 var snakeHead = snake[snake.length - 1];
+	 var snakeHeadX = snakeHead[0]
+     var snakeHeadY = snakeHead[1];
+     var newSnakeHead = [snakeHeadX, snakeHeadY - 1];
 
   snake.push(newSnakeHead);
   snake.shift();
@@ -59,7 +85,10 @@ document.addEventListener('DOMContentLoaded', function() {
       
 	// game loop - execute every 500ms
 	window.setInterval(function () { 
-	  moveRight(snake);
+ //	  moveRight(snake);
+ //   moveLeft(snake);
+ //   moveDown(snake);
+ //   moveUp(snake);
 	  draw(food, snake);
 	}, 500);
 
