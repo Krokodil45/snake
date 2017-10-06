@@ -11,11 +11,11 @@
 
 let WIDTH = 20;
 let HEIGHT = 20;
+let moveDirection = 'right'; 'left';'up';'down'
 //            x, y
 // snake = [[23,23],[24,23],[25,23]]
 // food =  [3,4] //[x,y]
 function draw(food, snake) {
-	console.log("snake: " + snake);
 	let PIXEL_SIZE = 20;
 	let BORDER = 2;
 
@@ -84,15 +84,49 @@ document.addEventListener('DOMContentLoaded', function() {
       draw(food, snake);
       
 	// game loop - execute every 500ms
-	window.setInterval(function () { 
- //	  moveRight(snake);
- //   moveLeft(snake);
- //   moveDown(snake);
- //   moveUp(snake);
+	window.setInterval(function () {
+        if (moveDirection === 'right') {
+            moveRight(snake);
+        }
+        if (moveDirection === 'left') {
+            moveLeft(snake);
+        }
+        if (moveDirection === 'up'){
+            moveUp(snake);
+        }
+        if (moveDirection === 'down'){
+            moveDown(snake);
+        }
+
 	  draw(food, snake);
 	}, 500);
-
 
 	
 }, false);
 
+ document.addEventListener("keydown", function (e) {
+   
+
+    // left
+    if(e.keyCode === 37 || e.keyCode === 65){
+        moveDirection ='left';  
+    }
+
+    // right
+    if(e.keyCode === 39 || e.keyCode === 68){    
+        moveDirection = 'right';
+    }
+
+    // up
+    if( e.keyCode === 38 || e.keyCode === 87){
+        moveDirection = 'up';
+    }
+
+    // down
+    if(e.keyCode === 40 || e.keyCode === 83){
+        moveDirection = 'down';
+    }                 
+    });
+
+// 1. print to console, what key was pressed (add key listener on canvas).
+// 2. save last pressed direction key and print it in game loop.
